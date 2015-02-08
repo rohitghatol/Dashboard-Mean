@@ -1,0 +1,40 @@
+<section data-ng-controller="OrganizationsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="organization.name"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == organization.user._id))">
+		<a class="btn btn-primary" href="/#!/organizations/{{organization._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+    <div class="row">
+        <div class="col-md-4"><label>Projects</label></div>
+        <div class="col-md-4">
+            <span data-ng-repeat="project in organization.projects">
+                <span data-ng-bind="project.name"></span>
+            </span>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4"><label>Members</label></div>
+    </div>
+    <div class="row">
+        <ul class="col-md-offset-1 col-md-8">
+            <li data-ng-repeat="member in organization.members">
+                <span data-ng-bind="member.firstName"></span> <span data-ng-bind="member.lastName"></span>
+            </li>
+        </ul>
+    </div>
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="organization.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="organization.user.displayName"></span>
+		</em>
+	</small>
+</section>
