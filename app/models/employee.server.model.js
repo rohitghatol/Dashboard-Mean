@@ -42,6 +42,9 @@ var EmployeeSchema = new Schema({
     type:String,
     enum:['Junior Software Developer','Software Developer','Senior Software Developer','Junior QA Engineer','QA Engineer','Senior QA Engineer','Tech Lead','QA Lead','Engineering Manager','QA Manager','Architect','BU Head']
   },
+  billable:{
+    type:Boolean
+  },
 	created: {
 		type: Date,
 		default: Date.now
@@ -51,6 +54,22 @@ var EmployeeSchema = new Schema({
 		ref: 'User'
 	}
 });
+
+EmployeeSchema.pre('save',function(next){
+  console.log('Employee is being changed');
+
+  this.before=this.belongsTo;
+  next();
+});
+
+EmployeeSchema.post('save',function(doc){
+  console.log('Employee has changed');
+  console.log('Before-->');
+  console.log('    '+this.before);
+  console.log('After--->');
+  console.log('    '+this.belongsTo);
+});
+
 EmployeeSchema.plugin(relationship, { relationshipPathName:['belongsTo','worksFor'] });
 
 mongoose.model('Employee', EmployeeSchema);

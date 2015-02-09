@@ -5,42 +5,57 @@
     <div class="col-md-12">
         <form class="form-horizontal" data-ng-submit="update()" novalidate>
             <fieldset>
-                    <div class="form-group">
-                        <label class="control-label" for="firstName">First Name</label>
-                        <div class="controls">
-                            <input type="text" data-ng-model="employee.firstName" id="firstName" class="form-control" placeholder="First Name" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="lastName">Last Name</label>
-                        <div class="controls">
-                            <input type="text" data-ng-model="employee.lastName" id="lastName" class="form-control" placeholder="Last Name" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label" for="skills">Skills</label>
-                        <div class="controls" id="skills">
+                <div class="form-group">
+                    <label class="control-label" for="firstName">First Name</label>
 
-                            <tags-input ng-model="employee.skills"  display-property="name">
-                            </tags-input>
-                            (Press tab to convert text to tag)
+                    <div class="controls">
+                        <input type="text" data-ng-model="employee.firstName" id="firstName" class="form-control"
+                               placeholder="First Name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="lastName">Last Name</label>
 
-                        </div>
+                    <div class="controls">
+                        <input type="text" data-ng-model="employee.lastName" id="lastName" class="form-control"
+                               placeholder="Last Name" required>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label" for="organization">Organization</label>
-                        <div class="controls" id="organization">
-                            <select ng-model="employee.belongsTo" ng-options="org._id as org.name for org in organizations"></select>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="skills">Skills</label>
+
+                    <div class="controls" id="skills">
+
+                        <tags-input ng-model="employee.skills" display-property="name">
+                        </tags-input>
+                        (Press tab to convert text to tag)
+
                     </div>
-                    <div class="form-group">
-                        <label class="control-label" for="projects">Projects</label>
-                        <div class="controls" id="projects">
-                            <select ng-model="employee.worksFor" ng-options="project._id as project.name for project in projects"></select>
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="organization">Organization</label>
+
+                    <div class="controls" id="organization">
+                        <select ng-model="employee.belongsTo"
+                                ng-options="org._id as org.name for org in organizations"></select>
                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="projects">Projects</label>
+
+                    <div class="controls" id="projects">
+                        <select ng-model="employee.worksFor"
+                                ng-options="project._id as project.name for project in projects"></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="billable">Billable</label>
+                    <input type="checkbox" class="controls" id="billable" ng-model="employee.billable">
+
+                </div>
                 <div class="form-group">
                     <label class="control-label" for="role">Role</label>
+
                     <div class="controls" id="role">
                         <select ng-model="employee.role" ng-options="v for v in roles track by v"></select>
                     </div>
@@ -48,9 +63,9 @@
                 <div class="form-group">
                     <input type="submit" value="Update" class="btn btn-default">
                 </div>
-				<div data-ng-show="error" class="text-danger">
-					<strong data-ng-bind="error"></strong>
-				</div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
             </fieldset>
         </form>
     </div>

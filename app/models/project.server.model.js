@@ -44,6 +44,19 @@ var ProjectSchema = new Schema({
       ref:'Employee'
     }
   ],
+
+  totalHeadCount:{
+    type:Number,
+    default:0
+  },
+  billableHeadCount:{
+    type:Number,
+    default:0
+  },
+  benchHeadCount:{
+    type:Number,
+    default:0
+  },
 	created: {
 		type: Date,
 		default: Date.now
@@ -54,5 +67,8 @@ var ProjectSchema = new Schema({
 	}
 });
 
+
 ProjectSchema.plugin(relationship, { relationshipPathName:'belongsTo' });
+
+
 mongoose.model('Project', ProjectSchema);

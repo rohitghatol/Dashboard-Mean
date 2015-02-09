@@ -32,7 +32,18 @@ var OrganizationSchema = new Schema({
       ref:'Project'
     }
   ],
-
+  totalHeadCount:{
+    type:Number,
+    default:0
+  },
+  billableHeadCount:{
+    type:Number,
+    default:0
+  },
+  benchHeadCount:{
+    type:Number,
+    default:0
+  },
 	created: {
 		type: Date,
 		default: Date.now

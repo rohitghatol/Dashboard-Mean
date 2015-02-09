@@ -18,8 +18,7 @@ angular.module('employees').controller('EmployeesController', ['$scope', '$state
       'QA Manager',
       'Architect',
       'BU Head'
-
-    ]
+    ];
 
     // Create new Employee
     $scope.create = function () {
