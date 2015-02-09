@@ -1,8 +1,8 @@
 'use strict';
 
 // Projects controller
-angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects',
-	function($scope, $stateParams, $location, Authentication, Projects) {
+angular.module('projects').controller('ProjectsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Projects','Organizations',
+	function($scope, $stateParams, $location, Authentication, Projects,Organizations) {
 		$scope.authentication = Authentication;
 
 		// Create new Project
@@ -61,6 +61,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$statePa
 			$scope.project = Projects.get({ 
 				projectId: $stateParams.projectId
 			});
+      $scope.organizations = Organizations.query();
 		};
 	}
 ]);

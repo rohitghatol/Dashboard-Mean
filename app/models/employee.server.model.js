@@ -36,8 +36,12 @@ var EmployeeSchema = new Schema({
   worksFor:[{
     type:Schema.ObjectId,
     ref:'Project',
-    childPath:'projects'
+    childPath:'members'
   }],
+  role:{
+    type:String,
+    enum:['Junior Software Developer','Software Developer','Senior Software Developer','Junior QA Engineer','QA Engineer','Senior QA Engineer','Tech Lead','QA Lead','Engineering Manager','QA Manager','Architect','BU Head']
+  },
 	created: {
 		type: Date,
 		default: Date.now

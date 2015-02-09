@@ -12,6 +12,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label" for="organization">Organization</label>
+                    <div class="controls" id="organization">
+                        <select ng-model="project.belongsTo" ng-options="org._id as org.name for org in organizations"></select>
+                    </div>
+                </div>
+                <div class="form-group">
                     <input type="submit" value="Update" class="btn btn-default">
                 </div>
 				<div data-ng-show="error" class="text-danger">
