@@ -54,22 +54,31 @@ var EmployeeSchema = new Schema({
 		ref: 'User'
 	}
 });
+EmployeeSchema.set('toJSON', {  virtuals: true });
+
+EmployeeSchema.post('init',function(doc){
+  //console.log('===> Post --> Init');
+  this._original = JSON.parse(JSON.stringify(this));
+  console.log(this._original);
+  //console.log('    '+this);
+});
+
 
 EmployeeSchema.pre('save',function(next){
-  console.log('Employee is being changed');
-
-  this.before=this.belongsTo;
+  //console.log('===> Pre --> Save');
+  //console.log('    '+this);
   next();
 });
 
 EmployeeSchema.post('save',function(doc){
-  console.log('Employee has changed');
-  console.log('Before-->');
-  console.log('    '+this.before);
-  console.log('After--->');
-  console.log('    '+this.belongsTo);
+  console.log('===> Post --> Save');
+  console.log("Before==>");
+  console.log('    '+this._original.belongsTo);
+  console.log("After==>");
+  console.log('    '+this);
 });
 
+EmployeeSchema.set
 EmployeeSchema.plugin(relationship, { relationshipPathName:['belongsTo','worksFor'] });
 
 mongoose.model('Employee', EmployeeSchema);

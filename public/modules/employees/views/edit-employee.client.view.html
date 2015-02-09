@@ -37,7 +37,7 @@
 
                     <div class="controls" id="organization">
                         <select ng-model="employee.belongsTo"
-                                ng-options="org._id as org.name for org in organizations"></select>
+                                ng-options="org._id as org.name for org in organizations track by org._id"></select>
                     </div>
                 </div>
                 <div class="form-group">
@@ -45,7 +45,7 @@
 
                     <div class="controls" id="projects">
                         <select ng-model="employee.worksFor"
-                                ng-options="project._id as project.name for project in projects"></select>
+                                ng-options="project._id as project.name for project in projects track by project._id"></select>
                     </div>
                 </div>
                 <div class="form-group">
